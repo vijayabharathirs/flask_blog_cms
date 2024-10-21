@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Post{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Edit Post</h1>
+        <form action="/edit/{{ post['_id'] }}" method="post" enctype="multipart/form-data">
+            <label for="title">Title:</label>
+            <input type="text" name="title" value="{{ post['title'] }}" required><br>
+
+            <label for="content">Content:</label><br>
+            <textarea name="content" required>{{ post['content'] }}</textarea><br>
+
+            <!-- Image upload and URL fields are optional -->
+            <label for="image">Upload New Image (optional):</label><br>
+            <input type="file" name="image" accept="image/*"><br>
+            <small>Leave blank if no new image is required.</small><br>
+
+            <label for="image-url">Or enter a new image URL (optional):</label><br>
+            <input type="url" name="image_url" placeholder="Enter image URL"><br>
+            <small>If you enter a URL, it will be used as the post's image.</small><br>
+
+            <button type="submit">Update</button>
+        </form>
+    </div>
+{% endblock %}
